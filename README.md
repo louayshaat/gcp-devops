@@ -75,8 +75,8 @@ gcloud beta builds triggers list
  * Commit those changes back to the repo
 ```
 vim main.go
-git add main.go
-git commit main.go -m "update 1"
+git add .
+git commit -m "update 1"
 git push --all google
 watch -t -n2 kubectl logs -lrun=exapp
 kubectl get events --sort-by='{.lastTimestamp}' --namespace=default --watch
