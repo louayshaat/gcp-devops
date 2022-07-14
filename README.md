@@ -51,11 +51,12 @@ gcloud projects add-iam-policy-binding $PROJECT \
     --role=roles/container.developer
 ```
 
-### Example 1 - Manually submit a Cloud Build job
+## Manually submit a Cloud Build job
 
 #### Clone the repo
+ ![#f03c15](https://via.placeholder.com/15/f03c15/f03c15.png) `Change YOURID to your Github ID`
 ```
-git clone https://github.com/louayshaat/gcp-devops
+git clone https://github.com/YOURID/gcp-devops
 cd gcp-devops
 ```
 
@@ -78,7 +79,7 @@ gcloud builds submit --config=cloudbuild.yaml
 kubectl logs -lrun=exapp -f
 ```
 
-### Setup CICD - Create a repo, and setup a Cloud Build trigger
+## Setup CICD - Create a repo, and setup a Cloud Build trigger
 
 #### Create your ssh keys
 ![#c5f015](https://via.placeholder.com/15/c5f015/c5f015.png) `Use your email address`
