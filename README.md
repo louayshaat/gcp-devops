@@ -8,13 +8,6 @@ To use this builder, your builder service account will need IAM permissions suff
 
 ### Prep work
 ```
-
-git clone https://github.com/louayshaat/gcp-devops
-
-cd gcp-devops
-
-docker build -t exapp .
-
 gcloud config set project core-demos
 
 gcloud services enable containerregistry.googleapis.com
@@ -32,19 +25,33 @@ gcloud projects add-iam-policy-binding $PROJECT \
 ```
 
 ### Example 1 - Manually submit a Cloud Build job
+
+# Clone the repo
 ```
-# Need to deploy pod once
+git clone https://github.com/louayshaat/gcp-devops
+cd gcp-devops
+```
+
+# Build and puch the image
+```
+docker build -t exapp .
+
 docker tag exapp gcr.io/coredemos/exapp
 
 docker push gcr.io/core-demos/exapp
-
+```
+# Deploy to GKE
+```
 kubectl apply -f deployment.yaml
 
 gcloud builds submit --config=cloudbuild.yaml
+```
+# Watch the logs
+```
 kubectl logs -lrun=exapp -f
 ```
 
-### Example 2 - Setup CICD - Create a repo, and setup a Cloud Build trigger
+### Setup CICD - Create a repo, and setup a Cloud Build trigger
 ```
 ssh-keygen -t rsa -b 4096 -C "source repo build louays@google.com" -f ~/.ssh/myrepokey -P ''
 cat ~/.ssh/myrepokey.pub
