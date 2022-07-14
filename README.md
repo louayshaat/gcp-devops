@@ -1,3 +1,8 @@
+###
+Ensure you have a GKE cluster created
+###
+
+
 To use this builder, your builder service account will need IAM permissions sufficient for the operations you want to perform. For typical read-only usage, the "Kubernetes Engine Viewer" role is sufficient. To deploy container images on a GKE cluster, the "Kubernetes Engine Developer" role is sufficient. Check the GKE IAM page for details.
 
 Running the following command will give Cloud Build Service Account container.developer role access to your Container Engine clusters:
