@@ -1,0 +1,14 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/core-demos/exapp', '.']
+  timeout: 500s
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/core-demos/exapp']
+# deploy container image to GKE
+- name: "gcr.io/cloud-builders/gke-deploy"
+  args:
+  - run
+  - --filename=deployment.yaml
+  - --image=gcr.io/core-demos/exapp:latest
+  - --location=europe-west4-a
+  - --cluster=devops-demo
