@@ -2,6 +2,23 @@
 Ensure you have a GKE cluster created
 ###
 
+
+### Prepare the repo for your environment
+
+ ![#f03c15](https://via.placeholder.com/15/f03c15/f03c15.png) `Fork the repo and modify the following files before you proceeed`
+
+[CloudBuild](cloudbuild.yaml)
+- Change the Image, location and cluster under args
+
+[Deployment File](deployment.yaml)
+- Change the project under the image to your project name
+
+[Trigger](trigger.yaml)
+- Change the Branch, ProjectID and Repo under triggerTemplate
+
+
+
+
 ### Permissions
 To use this builder, your builder service account will need IAM permissions sufficient for the operations you want to perform. For typical read-only usage, the "Kubernetes Engine Viewer" role is sufficient. To deploy container images on a GKE cluster, the "Kubernetes Engine Developer" role is sufficient. Check the GKE IAM page for details.
 
@@ -14,8 +31,16 @@ gcloud services enable containerregistry.googleapis.com
 
 gcloud services enable cloudbuild.googleapis.com
 
-gcloud container clusters get-credentials --zone=us-central1-c devops-demo
+```
 
+
+ ![#f03c15](https://via.placeholder.com/15/f03c15/f03c15.png) `Change the details to your GKE Cluster setup`
+
+```
+gcloud container clusters get-credentials --zone=us-central1-c devops-demo
+```
+#### Add required variables
+```
 PROJECT="$(gcloud projects describe \
     $(gcloud config get-value core/project -q) --format='get(projectNumber)')"
 
@@ -54,8 +79,9 @@ kubectl logs -lrun=exapp -f
 ### Setup CICD - Create a repo, and setup a Cloud Build trigger
 
 #### Create your ssh keys
+![#c5f015](https://via.placeholder.com/15/c5f015/c5f015.png) `Use your email address`
 ```
-ssh-keygen -t rsa -b 4096 -C "source repo build louays@google.com" -f ~/.ssh/myrepokey -P ''
+ssh-keygen -t rsa -b 4096 -C "source repo build email@email.com" -f ~/.ssh/myrepokey -P ''
 cat ~/.ssh/myrepokey.pub
 ```
 ### Upload key to GCP
@@ -69,9 +95,14 @@ https://source.cloud.google.com/user/ssh_keys
 ```
 gcloud source repos create mycode-repo
 gcloud source repos describe mycode-repo
+```
+![#c5f015](https://via.placeholder.com/15/c5f015/c5f015.png) `Use your email address`
+```
 git config user.email XXXX@XXXXX.com
 ```
 #### Configure authentication over SSH
+
+![#c5f015](https://via.placeholder.com/15/c5f015/c5f015.png) `User should be your Cloud Identity`
 ```
 cat > ~/.ssh/config <<EOF
 Host source.developers.google.com
@@ -82,8 +113,9 @@ EOF
 ```
 
 #### Push config  to the repo
+![#c5f015](https://via.placeholder.com/15/c5f015/c5f015.png) `Change IDENTITY to your Cloud Identity and PROJECT to your Project Name`
 ```
-git remote add google ssh://XXXXXX@XXXXX.altostrat.com@source.developers.google.com:2022/p/core-demos/r/mycode-repo
+git remote add google ssh://IDENTITY@source.developers.google.com:2022/p/PROJECT/r/mycode-repo
 git add .
 git commit -m "files"
 git push --all google
