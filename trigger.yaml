@@ -5,4 +5,4 @@ name: mytrig
 triggerTemplate:
   branchName: master
   projectId: core-demos
-  repoName: <yourreponame>
+  repoName: mycode-repo
