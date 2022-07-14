@@ -1,3 +1,5 @@
+![repo](repo.png)
+
 ### Pre-requisites
 Ensure you have a GKE cluster created
 ###
