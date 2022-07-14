@@ -26,13 +26,13 @@ gcloud projects add-iam-policy-binding $PROJECT \
 
 ### Example 1 - Manually submit a Cloud Build job
 
-# Clone the repo
+#### Clone the repo
 ```
 git clone https://github.com/louayshaat/gcp-devops
 cd gcp-devops
 ```
 
-# Build and puch the image
+#### Build and push the image
 ```
 docker build -t exapp .
 
@@ -40,46 +40,56 @@ docker tag exapp gcr.io/coredemos/exapp
 
 docker push gcr.io/core-demos/exapp
 ```
-# Deploy to GKE
+#### Deploy to GKE
 ```
 kubectl apply -f deployment.yaml
 
 gcloud builds submit --config=cloudbuild.yaml
 ```
-# Watch the logs
+#### Watch the logs
 ```
 kubectl logs -lrun=exapp -f
 ```
 
 ### Setup CICD - Create a repo, and setup a Cloud Build trigger
+
+#### Create your ssh keys
 ```
 ssh-keygen -t rsa -b 4096 -C "source repo build louays@google.com" -f ~/.ssh/myrepokey -P ''
 cat ~/.ssh/myrepokey.pub
 ```
-### Upload key to
+### Upload key to GCP
+
 https://source.cloud.google.com/user/ssh_keys
 
 ### Setup Cloud Build
- * Create GCP source repo
- * Configure authentication over SSH 
- * push config files+code to the repo
+
+
+#### Create GCP source repo
 ```
 gcloud source repos create mycode-repo
 gcloud source repos describe mycode-repo
 git config user.email XXXX@XXXXX.com
+```
+#### Configure authentication over SSH
+```
 cat > ~/.ssh/config <<EOF
 Host source.developers.google.com
     HostName source.developers.google.com
     User XXXXX@XXXXXX.altostrat.com
     IdentityFile ~/.ssh/myrepokey
 EOF
+```
+
+#### Push config  to the repo
+```
 git remote add google ssh://XXXXXX@XXXXX.altostrat.com@source.developers.google.com:2022/p/core-demos/r/mycode-repo
 git add .
 git commit -m "files"
 git push --all google
 ```
 
-### Trigger a manual Cloud Build run
+#### Trigger a manual Cloud Build run
 ```
 # Create the cloud build trigger
 gcloud beta builds triggers import --source=trigger.yaml --verbosity debug
@@ -87,8 +97,9 @@ gcloud beta builds triggers list
 ```
 
 ### Trigger an automated Cloud Build run
- * Edit some code
- * Commit those changes back to the repo
+
+
+#### Edit some code & commit it
 ```
 vim main.go
 git add .
