@@ -7,7 +7,7 @@ Running the following command will give Cloud Build Service Account container.de
 
 git clone https://github.com/louayshaat/gcp-devops
 
-cd gcp_cloudbuild
+cd gcp-devops
 
 docker build -t exapp .
 
