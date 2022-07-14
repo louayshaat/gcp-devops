@@ -32,7 +32,7 @@ gcloud projects add-iam-policy-binding $PROJECT \
 # Need to deploy pod once
 docker tag exapp gcr.io/coredemos/exapp
 
-docker push gcr.io/coredemos/exapp
+docker push gcr.io/core-demos/exapp
 
 kubectl apply -f deployment.yaml
 
