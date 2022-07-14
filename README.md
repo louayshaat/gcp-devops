@@ -30,7 +30,12 @@ gcloud projects add-iam-policy-binding $PROJECT \
 ### Example 1 - Manually submit a Cloud Build job
 ```
 # Need to deploy pod once
+docker tag exapp gcr.io/coredemos/exapp
+
+docker push gcr.io/coredemos/exapp
+
 kubectl apply -f deployment.yaml
+
 gcloud builds submit --config=cloudbuild.yaml
 kubectl logs -lrun=exapp -f
 ```
