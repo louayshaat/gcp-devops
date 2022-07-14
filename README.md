@@ -63,7 +63,7 @@ Host source.developers.google.com
     IdentityFile ~/.ssh/myrepokey
 EOF
 git remote add google ssh://XXXXXX@XXXXX.altostrat.com@source.developers.google.com:2022/p/core-demos/r/mycode-repo
-git add main.go Dockerfile cloudbuild.yaml
+git add .
 git commit -m "files"
 git push --all google
 ```
