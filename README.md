@@ -11,7 +11,7 @@ cd gcp-devops
 
 docker build -t exapp .
 
-gcloud config set project <my-project>
+gcloud config set project core-demos
 
 gcloud services enable containerregistry.googleapis.com
 
