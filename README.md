@@ -1,4 +1,4 @@
-![google](google.png)
+![new](new.png)
 
 ### Pre-requisites
 Ensure you have a GKE cluster created
