@@ -15,7 +15,7 @@ spec:
         run: exapp
     spec:
       containers:
-      - image: gcr.io/<yourproject>/exapp:latest
+      - image: gcr.io/core-demos/exapp:latest
         name: exapp
         ports:
         - containerPort: 8000
