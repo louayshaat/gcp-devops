@@ -26,9 +26,12 @@ To use this builder, your builder service account will need IAM permissions suff
 
 
 ### Prep work
+
+ ![#f03c15](https://via.placeholder.com/15/f03c15/f03c15.png) `Change core-demos to your Project name`
 ```
 gcloud config set project core-demos
-
+```
+```
 gcloud services enable containerregistry.googleapis.com
 
 gcloud services enable cloudbuild.googleapis.com
@@ -61,6 +64,7 @@ cd gcp-devops
 ```
 
 #### Build and push the image
+ ![#f03c15](https://via.placeholder.com/15/f03c15/f03c15.png) `Change core-demos to your Project name`
 ```
 docker build -t exapp .
 
