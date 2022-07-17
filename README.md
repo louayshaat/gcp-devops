@@ -68,7 +68,7 @@ cd gcp-devops
 ```
 docker build -t exapp .
 
-docker tag exapp gcr.io/coredemos/exapp
+docker tag exapp gcr.io/core-demos/exapp
 
 docker push gcr.io/core-demos/exapp
 ```
