@@ -3,6 +3,6 @@ ignoredFiles:
 - .gitignore
 name: mytrig
 triggerTemplate:
-  branchName: master
+  branchName: main
   projectId: core-demos
   repoName: mycode-repo
