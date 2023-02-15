@@ -122,7 +122,7 @@ EOF
 #### Push config  to the repo
 ![#c5f015](https://via.placeholder.com/15/c5f015/c5f015.png) `Change IDENTITY to your Cloud Identity and PROJECT to your Project Name`
 ```
-git remote add google ssh://IDENTITY@source.developers.google.com:2022/p/PROJECT/r/mycode-repo
+git remote add google ssh://admin@louays.altostrat.com@source.developers.google.com:2022/p/core-demos/r/mycode-repo
 git add .
 git commit -m "files"
 git push --all google
