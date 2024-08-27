@@ -62,15 +62,18 @@ gcloud projects add-iam-policy-binding $PROJECT \
 git clone https://github.com/YOURID/gcp-devops
 cd gcp-devops
 ```
-
+#### Create an Artifact Registry
+```
+gcloud artifacts repositories create exapp --location=us-central1 --repository-format=docker --description="Docker repository"
+```
 #### Build and push the image
  ![#f03c15](https://via.placeholder.com/15/f03c15/f03c15.png) `Change core-demos to your Project name`
 ```
 docker build -t exapp .
 
-docker tag exapp gcr.io/core-demos/exapp
+docker tag exapp us-central1-docker.pkg.dev/core-demos/exapp/exapp
 
-docker push gcr.io/core-demos/exapp
+docker push us-central1-docker.pkg.dev/core-demos/exapp/exapp
 ```
 #### Deploy to GKE
 ```
