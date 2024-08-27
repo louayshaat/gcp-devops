@@ -11,4 +11,4 @@ steps:
   - --filename=deployment.yaml
   - --image=gcr.io/core-demos/exapp:latest
   - --location=europe-west1
-  - --cluster=monitoring
+  - --cluster=standard
