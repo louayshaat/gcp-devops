@@ -1,6 +1,6 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/core-demos/exapp', '.']
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/core-demos/exapp/exapp', '.']
   timeout: 500s
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'us-central1-docker.pkg.dev/core-demos/exapp/exapp']
@@ -9,6 +9,6 @@ steps:
   args:
   - run
   - --filename=deployment.yaml
-  - --image=gcr.io/core-demos/exapp:latest
+  - --image=us-central1-docker.pkg.dev/core-demos/exapp/exapp:latest
   - --location=europe-west1
   - --cluster=standard
