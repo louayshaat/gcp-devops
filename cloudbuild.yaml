@@ -12,3 +12,5 @@ steps:
   - --image=us-central1-docker.pkg.dev/core-demos/exapp/exapp:latest
   - --location=europe-west1
   - --cluster=standard
+options:
+  requestedVerifyOption: VERIFIED
